@@ -3,7 +3,7 @@
 namespace controllers;
 
 class views
-{
+{    
     static function addHeader($template)
     {
         include APP_PATH . "/layouts/" . $template . ".php";

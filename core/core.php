@@ -8,7 +8,7 @@ class core
 {
     public static function EntryPoint()
     {
-        loadpage::header();
+        loadpage::load();
     }
 }
 
