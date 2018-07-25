@@ -1,4 +1,11 @@
-{margin-top: 0;}
+/*
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+*/
+h4, h5, h6,
+h1, h2, h3 {margin-top: 0;}
 ul, ol {margin: 0;}
 p {margin: 0;}
 html, body{
@@ -30,7 +37,37 @@ border-top-right-radius: 3px;
 .logo{
 	margin-top: 4px;
 }
-
+/*---social-icons-----*/
+.nav {
+	text-align:center;
+	
+}
+.nav ul{
+	padding:0;
+	margin:0;
+	list-style:none;
+}
+.nav li{
+	
+	margin: 0px 4% 0px 0;
+	display:inline-block;
+}
+.nav li a {
+	height:30px;
+	width:30px;
+	display: block;
+}
+.nav li a:hover {
+	zoom: 1;
+	filter: alpha(opacity=50);
+	opacity: 0.8;
+	-webkit-transition: opacity .15s ease-in-out;
+	-moz-transition: opacity .15s ease-in-out;
+	-ms-transition: opacity .15s ease-in-out;
+	-o-transition: opacity .15s ease-in-out;
+	transition: opacity .15s ease-in-out;
+}
+/*--------social simptip--------*/
 [data-tooltip] {
 	position: relative;
 	display: inline-block;

@@ -19,7 +19,11 @@ define('DATABASE', 'videotiendajandy');
  * Base URL
  */
 
- define('BASE_URL', 'http://localhost/videotiendajandy/');
+ //Para que tu lo veas
+ //define('BASE_URL', 'http://localhost/videotiendajandy/');
+ 
+ //Para mi
+ define('BASE_URL', 'http://localapps/videotiendajandy/');
 
 /**
  *  Verbos de Comunicacion
