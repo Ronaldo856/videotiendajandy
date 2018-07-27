@@ -9,7 +9,7 @@ class loadpage
     static function load()
     {
         self::header();
-        self::container();
+        self::body();
         self::footer();
     }
 
@@ -18,7 +18,7 @@ class loadpage
         views::addHeader('web/header');
     }
 
-    static function container()
+    static function body()
     {
         views::addView('web/container');
     }

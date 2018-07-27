@@ -1,6 +1,4 @@
 <?php
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
 /**
  *  Incluir Elementos Globales del Sistema
  */
@@ -19,3 +17,4 @@ include 'config/globals.php';
   */
 
   include 'core/core.php';
+    

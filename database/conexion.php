@@ -1,5 +1,7 @@
 <?php
 
+namespace database;
+
 class conexion
 {
     private $server = SERVER;
@@ -9,7 +11,7 @@ class conexion
 
     public function open()
     {
-        return mysqli_query($this->server, $this->user, $this->pass, $this->database);
+        return mysqli_connect($this->server, $this->user, $this->pass, $this->database);
     }
 
     public function close()

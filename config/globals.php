@@ -10,8 +10,8 @@ define('APP_PATH', dirname(__DIR__));
  * Configuracion a la BD
  */
 
-define('SERVER', '192.168.10.29');
-define('USER', 'movies');
+define('SERVER', 'localhost');
+define('USER', 'root');
 define('PASS', 'admin');
 define('DATABASE', 'videotiendajandy');
 
@@ -20,10 +20,10 @@ define('DATABASE', 'videotiendajandy');
  */
 
  //Para que tu lo veas
- define('BASE_URL', 'http://localhost/videotiendajandy/');
+ //define('BASE_URL', 'http://localhost/videotiendajandy/');
  
  //Para mi
- //define('BASE_URL', 'http://localapps/videotiendajandy/');
+ define('BASE_URL', 'http://localapps/videotiendajandy/');
 
 /**
  *  Verbos de Comunicacion
