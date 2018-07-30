@@ -14,5 +14,5 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 	<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
 	<script src="<?php echo BASE_URL; ?>assets/js/responsiveslides.min.js"></script>
-	<script src="<?php echo BASE_URL; ?>assets/js/plugins.js"></script>
+	<script src="<?php echo BASE_URL; ?>assets/js/plugins.js"></script>	
 </head>

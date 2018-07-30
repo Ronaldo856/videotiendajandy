@@ -1,5 +1,5 @@
 <div class="header_top">
-    <div class="col-sm-3 logo"><a href="index.html"><img src="<?php echo BASE_URL; ?>assets/images/logo.jpg" alt=""/></a></div>
+    <div class="col-sm-3 logo"><a href="<?php echo BASE_URL; ?>"><img src="<?php echo BASE_URL; ?>assets/images/logo.jpg" alt=""/></a></div>
     <div class="col-sm-6 nav">
         <ul>
             <li><span class="simptip-position-bottom simptip-movable" data-tooltip="comic"><a href="movie.html"> </a></span></li>

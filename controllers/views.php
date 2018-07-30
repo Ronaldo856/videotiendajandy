@@ -14,7 +14,7 @@ class views
         include APP_PATH . "/layouts/" . $template . ".php";
     }
 
-    static function addView($template)
+    static function addView($template, $data = array(), $instance = null)
     {
         include APP_PATH . "/views/" . $template . ".php";
     }

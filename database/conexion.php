@@ -11,7 +11,10 @@ class conexion
 
     public function open()
     {
-        return mysqli_connect($this->server, $this->user, $this->pass, $this->database);
+        $con = mysqli_connect($this->server, $this->user, $this->pass, $this->database);
+        mysqli_set_charset($con, "utf8");
+
+        return $con;
     }
 
     public function close()
