@@ -14,4 +14,9 @@ class request
         if(isset($_GET[$string]))
             return $_GET[$string];
     }
+
+    public static function redirecTo($url)
+    {
+        header("Location : " . $url );
+    }
 }
