@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="container_wrap">
 		<div class="header_top">
-		    <div class="col-sm-3 logo"><a href="index.html"><img src="images/logo.png" alt=""/></a></div>
+			<div class="col-sm-3 logo"><a href="<?php echo BASE_URL; ?>"><img src="<?php echo BASE_URL; ?>assets/images/logo.jpg" alt=""/></a></div>
 		    <div class="col-sm-6 nav">
 			  <ul>
 				 <li> <span class="simptip-position-bottom simptip-movable" data-tooltip="comic"><a href="movie.html"> </a></span></li>
@@ -25,23 +25,23 @@
 	      <div class="content">
       	     <div class="register">
 			   <div class="col-md-6 login-left">
-			  	 <h3>New Customers</h3>
-				 <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+			  	 <h3>Nuevos clientes</h3>
+				 <p>Al crear una cuenta con nuestra tienda, usted será capaz de moverse a través del proceso de pago más rápido, almacenar varias direcciones de envío, ver y hacer un seguimiento de sus pedidos en su cuenta y más.</p>
 				 <a class="acount-btn" href="<?php echo BASE_URL; ?>?view=registrar">Registrarme</a>
 			   </div>
 			   <div class="col-md-6 login-right">
-			  	<h3>Registered Customers</h3>
-				<p>If you have an account with us, please log in.</p>
+			  	<h3>Clientes registrados</h3>
+				<p>Si tiene una cuenta con nosotros, por favor inicie sesión.</p>
 				<form>
 				  <div>
-					<span>Email Address<label>*</label></span>
+					<span>Dirección de correo electrónico<label>*</label></span>
 					<input type="text"> 
 				  </div>
 				  <div>
-					<span>Password<label>*</label></span>
+					<span>Contraseña<label>*</label></span>
 					<input type="text"> 
 				  </div>
-				  <a class="forgot" href="#">Forgot Your Password?</a>
+				  <a class="forgot" href="#">¿Olvidó su contraseña?</a>
 				  <input type="submit" value="Login">
 			    </form>
 			   </div>	
