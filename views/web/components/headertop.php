@@ -13,7 +13,7 @@
     <div class="col-sm-3 header_right">
         <ul class="header_right_box">
             <!--<li><img src="<?php echo BASE_URL; ?>assets/images/p1.png" alt=""/></li>-->
-            <li><p><a href="login.html">Entrar</a></p></li>
+            <li><p><a href="<?php echo BASE_URL ?>?view=entrar">Entrar</a></p></li>
             <li class="last"><i class="edit"> </i></li>            
         </ul>
     </div>

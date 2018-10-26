@@ -10,9 +10,30 @@ class loadpage
 {
     static function load()
     {
-        self::header();
-        self::body();
-        self::footer();
+        switch(request::queryString('view'))
+        {
+            case '':
+                self::header();
+                self::body();
+                self::footer();
+            break;
+
+            case 'entrar':
+                self::header();
+                views::addView('web/components/login');
+                self::footer();
+            break;
+
+            case 'registrar':
+                self::header();
+                views::addView('web/components/registrar');
+                self::footer();
+            break;
+
+            default:
+                echo 'Vista no encontrada';
+            break;
+        }        
     }
 
     static function header()
@@ -30,7 +51,7 @@ class loadpage
             views::addView('web/components/details', $data, $peliculas);
         }
         else if(request::queryString('alquilar') == '0')
-            header('Location :' . BASE_URL . '?session=0');
+            header('Location :' . BASE_URL . '?view=entrar');
         else
             views::addView('web/container');
     }
