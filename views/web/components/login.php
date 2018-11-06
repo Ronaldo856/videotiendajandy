@@ -4,8 +4,8 @@
 			<div class="col-sm-3 logo"><a href="<?php echo BASE_URL; ?>"><img src="<?php echo BASE_URL; ?>assets/images/logo.jpg" alt=""/></a></div>
 		    <div class="col-sm-6 nav">
 			  <ul>
-				 <li> <span class="simptip-position-bottom simptip-movable" data-tooltip="comic"><a href="movie.html"> </a></span></li>
-				 <li><span class="simptip-position-bottom simptip-movable" data-tooltip="movie"><a href="movie.html"> </a> </span></li>
+			  <li><span class="simptip-position-bottom simptip-movable" data-tooltip="Registrar"><a href="<?php echo BASE_URL; ?>?view=registrar"> </a></span></li>
+            <li><span class="simptip-position-bottom simptip-movable" data-tooltip="Peliculas"><a href="<?php echo BASE_URL; ?>?details"> </a> </span></li>
 				 <li><span class="simptip-position-bottom simptip-movable" data-tooltip="video"><a href="movie.html"> </a></span></li>
 				 <li><span class="simptip-position-bottom simptip-movable" data-tooltip="game"><a href="movie.html"> </a></span></li>
 				 <li><span class="simptip-position-bottom simptip-movable" data-tooltip="tv"><a href="movie.html"> </a></span></li>
@@ -34,7 +34,7 @@
 				<p>Si tiene una cuenta con nosotros, por favor inicie sesión.</p>
 				<form>
 				  <div>
-					<span>Dirección de correo electrónico<label>*</label></span>
+					<span>Documento de Identidad<label>*</label></span>
 					<input type="text"> 
 				  </div>
 				  <div>
@@ -42,7 +42,7 @@
 					<input type="text"> 
 				  </div>
 				  <a class="forgot" href="#">¿Olvidó su contraseña?</a>
-				  <input type="submit" value="Login">
+				  <input type="submit" class='acount-btn' style='outline: none;' border='0' value="Login">
 			    </form>
 			   </div>	
 			   <div class="clearfix"> </div>

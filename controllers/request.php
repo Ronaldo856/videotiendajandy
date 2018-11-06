@@ -9,6 +9,11 @@ class request
         return GET;
     }
 
+    public static function isPost()
+    {
+        return POST;
+    }
+
     public static function queryString($string)
     {
         if(isset($_GET[$string]))

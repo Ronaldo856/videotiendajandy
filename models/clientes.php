@@ -1,7 +1,12 @@
 <?php
-class cliente
+
+namespace models;
+
+use database\database;
+
+class clientes
 {
-    private $idcliente;
+    private $documento;
     private $nombres;
     private $apellidos;
     private $direccion;
@@ -10,7 +15,7 @@ class cliente
 
     public function setDocumento($documento)
     {
-        $this->documeto=$documento;
+        $this->documento=$documento;
     }
 
     public function getDocumento()
@@ -80,44 +85,51 @@ class cliente
 
     public function agregarCliente()
     {
-        $this->conexion=Conectarse();
-        $sql="insert into vj_clientes(id_cliente,nombres,apellidos,direccion,correo,telefono)
-        values ('$this->documento','$this->nombres','$this->apellidos','$this->direccion','$this->correo','$this->telefono')";
-        $resultado=$this->conexion->query($sql);
-        $this->conexion->close();
+        $database = new database();
+        $sql="INSERT INTO vj_clientes (id_cliente,nombres,apellidos,direccion,correo,telefono) VALUES ('$this->documento','$this->nombres','$this->apellidos','$this->direccion','$this->correo','$this->telefono')";
+        $resultado = $database->query($sql);
+        $database->close();
         return $resultado;
     }
 
     public function consultarClientes()
     {
-        $this->conexion=Conectarse();
+        $database = new database();
         $sql="select * from vj_clientes";
-        $resultado=$this->conexion->query($sql);
-        $this->conexion->close();
+        $resultado = $database->query($sql);
+        $database->close();
         return $resultado;
     }
 
-    public function editaCliente($documento, $nombres, $apellidos, $direccion, $correo, $telefono, $id_cliente)
+    public function editaCliente($documento, $nombres, $apellidos, $direccion, $correo, $telefono)
     {
-        $this->conexion = Conectarse();
-        $sql = "UPDATE vj_clientes SET id_cliente = '$documento', nombres ='$nombres', apellidos = '$apellidos', direccion = '$direccion', correo = '$correo', telefono = '$telefono' WHERE id_cliente = '$id_cliente'";
-        $resultado = $this->conexion->query($sql);
-        $this->conexion->Close();
+        $database = new database();
+        $sql = "UPDATE vj_clientes SET id_cliente = '$documento', nombres ='$nombres', apellidos = '$apellidos', direccion = '$direccion', correo = '$correo', telefono = '$telefono' WHERE id_cliente = '$documento'";
+        $resultado = $database->query($sql);
+        $database->close();
         return $resultado;
     }
 
-    public function eliminaCliente($id_cliente)
+    public function eliminaCliente($documento)
     {
-        $this->conexion = Conectarse();
+        $database = new database();
         $sql = "DELETE FROM vj_clientes WHERE id_cliente = '$documento'";
-        $resultado = $this->conexion->query($sql);
-        $this->conexion->Close();
+        $resultado = $database->query($sql);
+        $database->close();
         return $resultado;
     }
 
+    public function isNotEmpty($form)
+    {
+        $status = false;
 
+        foreach($form as $key => $value)        
+            if(empty($value))
+                $status = true;        
 
+        if($status)
+            header("Location : " . BASE_URL . '?view=registrar&empty=1');
 
-
-
+        return $status;
+    }
 }
