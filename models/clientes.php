@@ -97,6 +97,22 @@ class clientes
         $database = new database();
         $sql="select * from vj_clientes";
         $resultado = $database->query($sql);
+        while($registros = $database->assoc($resultado))
+        {
+            
+            echo "
+                <tr>
+                    <td style =' border: 1px solid #dadada; margin: 7px; padding: 3px;'>$registros[nombres]</td>
+                    <td style =' border: 1px solid #dadada; margin: 7px; padding: 3px;'>$registros[apellidos]</td>
+                    <td style =' border: 1px solid #dadada; margin: 7px; padding: 3px;'>$registros[direccion]</td>
+                    <td style =' border: 1px solid #dadada; margin: 7px; padding: 3px;'>$registros[correo]</td>
+                    <td style =' border: 1px solid #dadada; margin: 7px; padding: 3px;'>$registros[telefono]</td>
+                    <td style=' border: 1px solid #dadada; padding: 8px;'>";
+                    echo "<a href=' ",BASE_URL,"?view=eliminacliente&id_cliente=$registros[id_cliente]'><img src='./assets/images/delete.png' style ='margin: 7px;'> </a>";
+                    echo "<a href=' ",BASE_URL,"?view=editacliente&id_cliente=$registros[id_cliente]'><img src='./assets/images/update.png' style ='margin: 7px;' > </td>
+                </tr>
+                ";
+        }
         $database->close();
         return $resultado;
     }
@@ -117,6 +133,15 @@ class clientes
         $resultado = $database->query($sql);
         $database->close();
         return $resultado;
+    }
+
+    public function editaClienteId($documento)
+    {
+        $database = new database();
+        $sql = "SELECT * FROM vj_clientes WHERE id_cliente = '$documento'";
+        $resultado = $database->query($sql);
+        $database->close();
+        return $database->assoc($resultado);
     }
 
     public function isNotEmpty($form)

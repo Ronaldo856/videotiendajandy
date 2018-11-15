@@ -10,7 +10,7 @@
 				<li><span class="simptip-position-bottom simptip-movable" data-tooltip="Reportes Peliculas"><a href="<?php echo BASE_URL; ?>?view=report"> </a></span></li>
 				<li><span class="simptip-position-bottom simptip-movable" data-tooltip="Reportes Empleados"><a href="<?php echo BASE_URL; ?>?view=reporte"> </a></span></li>
 				<li><span class="simptip-position-bottom simptip-movable" data-tooltip="Reportes Categorias"><a href="<?php echo BASE_URL; ?>?view=reportca"> </a></span></li>
-				<li><span class="simptip-position-bottom simptip-movable" data-tooltip="Reportes Cliente"><a href="<?php echo BASE_URL; ?>?view=reportcl"> </a></span></li>
+                <li><span class="simptip-position-bottom simptip-movable" data-tooltip="Reportes Cliente"><a href="<?php echo BASE_URL; ?>?view=reportcl"> </a></span></li>
 				</ul>
 			</div>
 			<div class="col-sm-3 header_right">
@@ -30,46 +30,43 @@
 	      </div>
 	      <div class="content">
       	     <div class="register">
-		  	  <form action="<?php echo BASE_URL?>?view=creacategoria" method="post">
+		  	  <form action="<?php echo BASE_URL?>?view=reporte" method="post">
 				 <div class="register-top-grid">
-					<h3>Creación de Categorias</h3>
+					<h3>Reportes Clientes</h3>
 					 <div>
-					 	<span>Nombre de la Categoria<label>*</label></span>
-						<input name="nombrecategoria" type="text" id="nombrecategoria">
-					</div>
-					<div>
-						<span>Fecha de Creación<label>*</label></span>
-						<input name="fechacreacion" type="date" id="fechacreacion"> 
-					 </div>
-					 <div>
-						<span>Creado Por:<label>*</label></span>
-						<input name="creado" type="text" id="creado"> 
-					 </div>
+					 
 					 <div class="clearfix"> </div>
 					   <a class="news-letter" href="#">
-						 
+					
 					   </a>
 					 </div>
 				     <div class="clearfix"> </div>
 					 </div>
 				
-				<div class="clearfix"> </div>
-				<div class="register-but">	
-						   
-					   <input type="submit" id="button" class='acount-btn' style='outline: none;' border='0' value="Enviar">
-					   
-					   	<?php if(isset($_GET['empty']) && $_GET['empty'] == 1): ?>
-					   		<div class="alert alert-danger pull-right">Datos Obligtorios</div>
-						<?php endif;?>
-						<?php if(isset($_GET['success']) && $_GET['success'] == 1): ?>
-					   		<div class="alert alert-success pull-right">Categoria Registrada Exitosamente</div>
-						<?php endif;?>
-						<div class="clearfix"> </div>
+				
 					   
 				   </form>
 				</div>
-				
-				
+				<!--- Lista  -->
+				<div>
+		   			<br><div id='title_videos' style='background: #b10000; width:137px; color: white; padding: 8px; border-top-left-radius: 16px; border-top-right-radius: 16px;'>[ Listado de Clientes ]</div>
+					   <table style = 'width:100%;' >
+					   		<thead style='background: #b10000;  color: white;   padding: 8px;'>
+								<tr>
+									<th style='width: 48%;  padding: 8px;'>Nombres</th><th style=' padding: 8px;'>Apellidos</th>
+									<th style=' padding: 8px;'>Dirección</th><th style=' padding: 8px;'>correo</th><th style=' padding: 8px;'>Telefono</th><th style=' padding: 8px;'>Operaciones</th>
+								</tr>   
+							</thead>
+							<tbody>
+								<?php
+									 \models\clientes::consultarClientes();
+									 \models\clientes::editaCliente();
+								?>
+															
+								
+							</tbody>
+					   </table>
+		   		</div>
 		   </div>
            </div>
 

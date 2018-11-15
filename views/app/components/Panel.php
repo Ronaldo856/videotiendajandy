@@ -7,13 +7,21 @@
 				<li><span class="simptip-position-bottom simptip-movable" data-tooltip="Empleados"><a href="<?php echo BASE_URL; ?>?view=registro"> </a></span></li>
 				<li><span class="simptip-position-bottom simptip-movable" data-tooltip="Peliculas"><a href="<?php echo BASE_URL; ?>?view=registrope"> </a> </span></li>         
 				<li><span class="simptip-position-bottom simptip-movable" data-tooltip="Categorias"><a href="<?php echo BASE_URL; ?>?view=registroca"> </a></span></li>
-				<li><span class="simptip-position-bottom simptip-movable" data-tooltip="Reportes"><a href="<?php echo BASE_URL; ?>?view=report"> </a></span></li>
-				</ul>
+				<li><span class="simptip-position-bottom simptip-movable" data-tooltip="Reportes Peliculas"><a href="<?php echo BASE_URL; ?>?view=report"> </a></span></li>
+				<li><span class="simptip-position-bottom simptip-movable" data-tooltip="Reportes Empleados"><a href="<?php echo BASE_URL; ?>?view=reporte"> </a></span></li>
+				<li><span class="simptip-position-bottom simptip-movable" data-tooltip="Reportes Categorias"><a href="<?php echo BASE_URL; ?>?view=reportca"> </a></span></li>
+				<li><span class="simptip-position-bottom simptip-movable" data-tooltip="Reportes Cliente"><a href="<?php echo BASE_URL; ?>?view=reportcl"> </a></span></li>
+			</ul>
 			</div>
 			<div class="col-sm-3 header_right">
 			   <ul class="header_right_box">
 				 <li><img src="images/p1.png" alt=""/></li>
-				 <li><p><a href="<?php echo BASE_URL ?>?view=entrarp">Entrar</a></p></li>
+				 <?php if(count($_SESSION) <= 0): ?>
+				 	<li><p><a href="<?php echo BASE_URL ?>?view=entrarp">Entrar</a></p></li>
+				<?php else: ?>
+					<li><p><?php echo models\usuarioempleado::getProfile();?></p></li>
+					<li><a href="<?php echo BASE_URL?>?view=logout">Salir</a></li>
+				<?php endif;?>
 				 <li class="last"><i class="edit"> </i></li>
 				 <div class="clearfix"> </div>
 			   </ul>

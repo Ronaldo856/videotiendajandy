@@ -99,8 +99,8 @@ class empleado
     {
         $database = new database();
         $sql="INSERT INTO vj_empleado(id_empleado,nombres,apellidos,direccion,telefono,vj_cargos_id_cargo,vj_roles_id_rol) VALUES ('$this->documento','$this->nombres','$this->apellidos','$this->direccion','$this->telefono','$this->cargo','$this->rol')";
-        echo $sql;
         $resultado = $database->query($sql);
+        echo $sql;
         $database->close();
         return $resultado;
     }
@@ -110,6 +110,23 @@ class empleado
         $database = new database();
         $sql="select * from vj_empleado";
         $resultado = $database->query($sql);
+        while($registros = $database->assoc($resultado))
+        {
+            
+            echo "
+                <tr>
+                    <td style =' border: 1px solid #dadada; margin: 7px; padding: 3px;'>$registros[nombres]</td>
+                    <td style =' border: 1px solid #dadada; margin: 7px; padding: 3px;'>$registros[apellidos]</td>
+                    <td style =' border: 1px solid #dadada; margin: 7px; padding: 3px;'>$registros[direccion]</td>
+                    <td style =' border: 1px solid #dadada; margin: 7px; padding: 3px;'>$registros[telefono]</td>
+                    <td style =' border: 1px solid #dadada; margin: 7px; padding: 3px;'>$registros[vj_cargos_id_cargo]</td>
+                    <td style =' border: 1px solid #dadada; margin: 7px; padding: 3px;'>$registros[vj_roles_id_rol]</td>
+                    <td style=' border: 1px solid #dadada; padding: 8px;'>";
+                    echo "<a href=' ",BASE_URL,"?view=eliminaempleado&id_empleado=$registros[id_empleado]'><img src='./assets/images/delete.png' style ='margin: 7px;'> </a>";
+                    echo "<a href=' ",BASE_URL,"?view=editaempleado&id_empleado=$registros[id_empleado]'><img src='./assets/images/update.png' style ='margin: 7px;' > </td>
+                </tr>
+                ";
+        }
         $database->close();
         return $resultado;
     }
@@ -122,6 +139,17 @@ class empleado
         $database->close();
         return $resultado;
     }
+
+
+    public function editaEmpleadoId($codigo)
+    {
+        $database = new database();
+        $sql = "SELECT * FROM vj_empleado vjp JOIN vj_cargos vjc ON vjp.vj_cargos_id_cargo = vjc.id_cargo JOIN vj_roles vr ON vjp.vj_roles_id_rol = vr.id_rol WHERE id_empleado = '$codigo'";
+        $resultado = $database->query($sql);
+        $database->close();
+        return $database->assoc($resultado);
+    }
+
 
     public function eliminaEmpleado($documento)
     {

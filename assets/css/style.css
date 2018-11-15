@@ -229,6 +229,10 @@ body a {
     background: url(../images/img_sprite.png) -216px -9px;
 }
 
+.nav li:nth-child(7) a {
+    background: url(../images/img_sprite.png) -97px -145px;
+}
+
 ul.header_right_box {
     padding: 0;
     margin: 0 0 0 33%;
@@ -685,7 +689,7 @@ i.icon3 {
     float: right;
 }
 
-.search form input[type="text"] {
+.search form input[type="text"], .pswd {
     padding: 3px 0;
     font-weight: 500;
     font-size: 1em;

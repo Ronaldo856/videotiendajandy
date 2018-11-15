@@ -86,7 +86,7 @@ class categorias
                         <td style =' border: 1px solid #dadada; margin: 7px; padding: 3px;'>$registros[fecha_creacion]</td>
                         <td style=' border: 1px solid #dadada; padding: 8px;'>";
                         echo "<a href=' ",BASE_URL,"?view=eliminacategoria&id_categoria=$registros[id_categoria]'><img src='./assets/images/delete.png' style ='margin: 7px;'> </a>";
-                        echo "<img src='./assets/images/update.png' style ='margin: 7px;' > </td>
+                        echo "<a href=' ",BASE_URL,"?view=editacategoria&id_categoria=$registros[id_categoria]'><img src='./assets/images/update.png' style ='margin: 7px;' > </td>
                     </tr>
                     ";
             }
@@ -95,18 +95,29 @@ class categorias
     }
 
 
-    public function editaCategoria($nombrecategoria, $fechacreacion, $creado)
+    public function editaCategoria($codigo, $nombrecategoria, $fechacreacion, $creado)
     {
         $database = new database();
-        $sql = "UPDATE vj_categorias SET nombre_categoria ='$nombrecategoria', fecha_creacion = '$fechacreacion', creado_por = '$creado' WHERE nombre_categoria = '$nombrecategoria'";
+        $sql = "UPDATE vj_categorias SET id_categoria = '$codigo', nombre_categoria = '$nombrecategoria', fecha_creacion = '$fechacreacion', creado_por = '$creado' WHERE id_categoria = '$codigo'";
+    
         $resultado = $database->query($sql);
         $database->close();
         return $resultado;
     }
 
+
+    public function editaCategoriaId($codigo)
+    {
+        $database = new database();
+        $sql = "SELECT * FROM vj_categorias  WHERE id_categoria = '$codigo'";
+        $resultado = $database->query($sql);
+        $database->close();
+        return $database->assoc($resultado);
+    }
+
     public function eliminaCategoria($codigo)
     {
-        echo "otro 1[- $codigo -]";
+        
         $database = new database();
         
         $sql = "DELETE FROM vj_categorias WHERE id_categoria = '$codigo'";

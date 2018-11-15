@@ -30,46 +30,40 @@
 	      </div>
 	      <div class="content">
       	     <div class="register">
-		  	  <form action="<?php echo BASE_URL?>?view=creacategoria" method="post">
+		  	  <form action="<?php echo BASE_URL?>?view=updatecategoria" method="post">
 				 <div class="register-top-grid">
 					<h3>Creación de Categorias</h3>
+					<div>
+					 	<span>Codigo<label>*</label></span>
+						 <input name="codigo" type="hidden" id="codigo"  value = "<?php echo $id_categoria;?>"> 
+						<input  type="text"  disabled  value = "<?php echo $id_categoria;?>">
+					</div>
 					 <div>
 					 	<span>Nombre de la Categoria<label>*</label></span>
-						<input name="nombrecategoria" type="text" id="nombrecategoria">
+						<input name="nombrecategoria" type="text" id="nombrecategoria" value = "<?php echo $nombre_categoria;?>">
 					</div>
 					<div>
 						<span>Fecha de Creación<label>*</label></span>
-						<input name="fechacreacion" type="date" id="fechacreacion"> 
+						<input name="fechacreacion" type="date" id="fechacreacion" value = "<?php echo $fecha_creacion;?>"> 
 					 </div>
 					 <div>
 						<span>Creado Por:<label>*</label></span>
-						<input name="creado" type="text" id="creado"> 
+						<input name="creado" type="text" id="creado" value ="<?php echo $creado_por;?>"> 
 					 </div>
 					 <div class="clearfix"> </div>
-					   <a class="news-letter" href="#">
-						 
-					   </a>
-					 </div>
-				     <div class="clearfix"> </div>
 					 </div>
 				
 				<div class="clearfix"> </div>
 				<div class="register-but">	
 						   
-					   <input type="submit" id="button" class='acount-btn' style='outline: none;' border='0' value="Enviar">
+					   <input type="submit" id="button" class='acount-btn' style='outline: none;' border='0' value="Realizar Cambios">
 					   
-					   	<?php if(isset($_GET['empty']) && $_GET['empty'] == 1): ?>
-					   		<div class="alert alert-danger pull-right">Datos Obligtorios</div>
-						<?php endif;?>
-						<?php if(isset($_GET['success']) && $_GET['success'] == 1): ?>
-					   		<div class="alert alert-success pull-right">Categoria Registrada Exitosamente</div>
-						<?php endif;?>
-						<div class="clearfix"> </div>
-					   
+					   				   
 				   </form>
 				</div>
-				
-				
+			
+								
+		   		
 		   </div>
            </div>
 

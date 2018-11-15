@@ -9,8 +9,7 @@
             <li><span class="simptip-position-bottom simptip-movable" data-tooltip="Categorias"><a href="<?php echo BASE_URL; ?>?view=registroca"> </a></span></li>
             <li><span class="simptip-position-bottom simptip-movable" data-tooltip="Reportes Peliculas"><a href="<?php echo BASE_URL; ?>?view=report"> </a></span></li>
 			<li><span class="simptip-position-bottom simptip-movable" data-tooltip="Reportes Empleados"><a href="<?php echo BASE_URL; ?>?view=reporte"> </a></span></li>
-			<li><span class="simptip-position-bottom simptip-movable" data-tooltip="Reportes Categorias"><a href="<?php echo BASE_URL; ?>?view=reportca"> </a></span></li>
-			<li><span class="simptip-position-bottom simptip-movable" data-tooltip="Reportes Cliente"><a href="<?php echo BASE_URL; ?>?view=reportcl"> </a></span></li>
+				<li><span class="simptip-position-bottom simptip-movable" data-tooltip="Reportes Categorias"><a href="<?php echo BASE_URL; ?>?view=reportca"> </a></span></li>
 			 </ul>
 			</div>
 			<div class="col-sm-3 header_right">
@@ -30,68 +29,69 @@
 	      </div>
 	      <div class="content">
       	     <div class="register">
-		  	  <form action="<?php echo BASE_URL?>?view=creapelicula" method="post">
+			   <form action="<?php echo BASE_URL?>?view=updatepelicula" method="post">
 				 <div class="register-top-grid">
-					<h3>Registro de Peliculas</h3>
+					<h3>Editar Peliculas</h3>
+					<div>
+						<span>Código de Película<label>*</label></span>
+						<input name="codigo" type="text" id="codigo" value="<?php echo $id_peliculas;?>"> 
+					 </div>
 					 <div>
 						<span>Nombre de la Pelicula<label>*</label></span>
-						<input name="nombrepelicula" type="text" id="nombrepelicula"> 
+						<input name="nombrepelicula" type="text" id="nombrepelicula" value="<?php echo $nombre_pelicula;?>"> 
 					 </div>
 					 <div>
 						<span>Fecha de Estreno<label>*</label></span>
-						<input name="fechaestreno" type="date" id="fechaestreno"> 
+						<input name="fechaestreno" type="date" id="fechaestreno" value="<?php echo $fecha_estreno;?>"> 
 					 </div>
 					 <div>
 						 <span>Duración<label>*</label></span>
-						 <input name="duracion" type="text" id="duracion"> 
+						 <input name="duracion" type="text" id="duracion" value="<?php echo $duracion;?>"> 
 					 </div>
 					 <div>
 						 <span>Sinopsis<label>*</label></span>
-						 <input name="sinopsis" type="text" id="sinopsis"> 
+						 <input name="sinopsis" type="text" id="sinopsis" value="<?php echo $sinopsis;?>"> 
 					 </div>
                      <div>
 						 <span>Imagen<label>*</label></span>
-						 <input name="imagen" type="text" id="imagen">  
+						 <input name="imagen" type="text" id="imagen" value="<?php echo $imagen;?>">  
 					 </div>
                      <div>
 						 <span>Estado de Alquiler<label>*</label></span>
-						 <input name="estadoalquiler" type="text" id="estadoalquiler">  
+						 <input name="estadoalquiler" type="text" id="estadoalquiler" value="<?php echo $estado_alquiler;?>">  
 					 </div>
                      <div>
 						 <span>Estado de Reserva<label>*</label></span>
-						 <input name="estadoreserva" type="text" id="estadoreserva">  
+						 <input name="estadoreserva" type="text" id="estadoreserva" value="<?php echo $estado_reserva;?>">
 					 </div>
                      <div>
 						 <span>Fecha de Registro<label>*</label></span>
-						 <input name="fecharegistro" type="date" id="fecharegistro">  
+						 <input name="fecharegistro" type="date" id="fecharegistro" value="<?php echo $fecha_registro;?>">
 					 </div>
                      <div>
 						 <span>Creado Por:<label>*</label></span>
-						 <input name="creado" type="text" id="creado">  
+						 <input name="creado" type="text" id="creado" value="<?php echo $creado_por;?>">  
 					 </div>
                      <div>
 					 <span>Seleccionar Categoria<label>*</label></span>
 					 <select name="categoria" class="form-control">
-					 	<option value"">Seleccionar una Opción</option>
-						 <?php \models\cargo::agregaCategoria(); ?>
+					 	<option value="<?php echo $id_categoria; ?>"><?php echo $nombre_categoria; ?></option>                        
+						<?php \models\cargo::agregaCategoria(); ?>
    					 </select>
 					 </div>
 		
 					 <div class="clearfix"> </div>
-					  
+					   <a class="news-letter" href="#">
+						
+					   </a>
 					 </div>
 				     				
                         <div class="clearfix"> </div>
                         <div class="register-but">	
 						   
-					   <input type="submit" id="button" class='acount-btn' style='outline: none;' border='0' value="Enviar">
+					   <input type="submit" id="button" class='acount-btn' style='outline: none;' border='0' value="Realizar Cambios">
 					   
-					   	<?php if(isset($_GET['empty']) && $_GET['empty'] == 1): ?>
-					   		<div class="alert alert-danger pull-right">Datos Obligtorios</div>
-						<?php endif;?>
-						<?php if(isset($_GET['success']) && $_GET['success'] == 1): ?>
-					   		<div class="alert alert-success pull-right">Pelicula Registrada Exitosamente</div>
-						<?php endif;?>
+					   
 						<div class="clearfix"> </div>
 											   
 				   </form>

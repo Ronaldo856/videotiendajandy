@@ -23,6 +23,6 @@ class dataBase extends conexion
 
     public function escsql($str)
     {
-        return mysqli_real_escape_string($str);
+        return mysqli_real_escape_string($this->open(), $str);
     }
 }

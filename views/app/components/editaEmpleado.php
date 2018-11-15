@@ -30,78 +30,51 @@
 	      </div>
 	      <div class="content">
       	     <div class="register">
-		  	  <form action="<?php echo BASE_URL?>?view=creaempleado" method="post">
+		  	  <form action="<?php echo BASE_URL?>?view=updateempleado" method="post">
 				 <div class="register-top-grid">
-					<h3>Información Personal del Empleado</h3>
+					<h3>Editar Empleado</h3>
 					 <div>
 					 	<span>Documento<label>*</label></span>
-						<input name="documento" type="text" id="documento">
+						<input name="documento" type="text" id="documento" value="<?php echo $id_empleado;?>">
 					</div>
 					<div>
 						<span>Nombres<label>*</label></span>
-						<input name="nombres" type="text" id="nombres"> 
+						<input name="nombres" type="text" id="nombres" value="<?php echo $nombres;?>"> 
 					 </div>
 					 <div>
 						<span>Apellidos<label>*</label></span>
-						<input name="apellidos" type="text" id="apellidos"> 
+						<input name="apellidos" type="text" id="apellidos" value="<?php echo $apellidos;?>"> 
 					 </div>
 					 <div>
 						 <span>Dirección<label>*</label></span>
-						 <input name="direccion" type="text" id="direccion"> 
+						 <input name="direccion" type="text" id="direccion" value="<?php echo $direccion;?>"> 
 					 </div>
 					 <div>
 						 <span>Teléfono<label>*</label></span>
-						 <input name="telefono" type="text" id="telefono"> 
+						 <input name="telefono" type="text" id="telefono" value="<?php echo $telefono;?>"> 
 					 </div>
 					 <div>	
 					 	<span>Seleccionar Cargo<label>*</label></span>
 					 	<select name="cargo" class="form-control">
-					 		<option value"">Seleccionar una Opción</option>
+					 		<option value="<?php echo $id_cargo; ?>"><?php echo $nombre_cargo; ?></option>
 							 <?php \models\cargo::agregaCargo(); ?>
    					 	</select>
 					 </div>
                      <div>
 						 <span>Seleccionar Rol<label>*</label></span>
 						 <select name="rol" class="form-control">
-						 	<option value"">Seleccionar una Opción</option>
+						 	<option value="<?php echo $id_rol; ?>"><?php echo $nombre_rol; ?></option>
 							<?php \models\cargo::agregaRol(); ?>
 				         </select>
 					 </div>
-					 <div class="clearfix"> </div>
-					   <a class="news-letter" href="#">
+					
+						<a class="news-letter" href="#">
 						
-					   </a>
-					 </div>
-				     <div class="register-bottom-grid">
-						    <h3>Información de Inicio de Sesión</h3>
-							 <div>
-								<span>Contraseña<label>*</label></span>
-								<input name="contrasena" type="text" id="contrasena">
-							 </div>
-							 <div>
-								<span>Confirmar Contraseña<label>*</label></span>
-								<input name="confirmarcontrasena" type="text" id="confirmarcontrasena">
-							 </div>
-							 <div class="clearfix"> </div>
-					 </div>
-				
-					<div class="clearfix"> </div>
-						<div class="register-but">	
 					 	
-					   		<input type="submit" id="button" class='acount-btn' style='outline: none;' border='0' value="Enviar">
-					   		<div class="clearfix"> </div>
-					    
-					   	<?php if(isset($_GET['empty']) && $_GET['empty'] == 1): ?>
-					   		<div class="alert alert-danger pull-right">Datos Obligtorios</div>
-						<?php endif;?>
-						<?php if(isset($_GET['success']) && $_GET['success'] == 1): ?>
-					   		<div class="alert alert-success pull-right">Empleado Registrado Exitosamente</div>
-						<?php endif;?>
-						<?php if(isset($_GET['pass']) && $_GET['pass'] == 0): ?>
-					   		<div class="alert alert-danger pull-right">Contraseñas no coinciden</div>
-						<?php endif;?>
-					 
-					   <div class="clearfix"> </div>
+					   		<input type="submit" id="button" class='acount-btn' style='outline: none;' border='0' value="Realizar Cambios">
+					   		
+					 	</a>
+					 <div class="clearfix"> </div>
 					 </form>
 				</div>
 		   </div>

@@ -18,19 +18,20 @@
 	      <div class="content">
       	     <div class="register">
 			   <div class="col-md-6 login-left">
-			  	 
-				<form>
-				  <div>
-					<span>Documento de Identidad<label>*</label></span>
-					<input type="text"> 
-				  </div>
-				  <div>
-					<span>Contraseña<label>*</label></span>
-					<input type="text"> 
-				  </div>
-				  <a class="forgot" href="#">¿Olvidó su contraseña?</a>
-				  <input type="submit" class='acount-btn' style='outline: none;' border='0' value="Login">
-			    </form>
+				 <div class="col-md-6 login-right"> 
+						<form action="<?php echo BASE_URL?>?view=initsession" method="post">
+								<div>
+								<span>Documento de Identidad<label>*</label></span>
+								<input type="text" name="user"> 
+								</div>
+								<div>
+								<span>Contraseña<label>*</label></span>
+								<input type="password" name="pass">
+								</div>
+								<a class="forgot" href="#">¿Olvidó su contraseña?</a>
+								<input type="submit" class='acount-btn' style='outline: none;' border='0' value="Login">
+							</form>
+						</div>		
 			   </div>	
 			   <div class="clearfix"> </div>
 		     </div>

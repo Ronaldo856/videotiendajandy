@@ -16,6 +16,7 @@ class views
 
     static function addView($template, $data = array(), $instance = null)
     {
+        extract($data);
         include APP_PATH . "/views/" . $template . ".php";
     }
 }
