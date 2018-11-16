@@ -1,29 +1,25 @@
-CREATE DATABASE  IF NOT EXISTS `videotiendajandy` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `videotiendajandy`;
--- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
---
--- Host: localhost    Database: videotiendajandy
--- ------------------------------------------------------
--- Server version	5.7.22-log
+/*
+SQLyog Ultimate v11.11 (32 bit)
+MySQL - 5.7.21-log : Database - videotiendajandy
+*********************************************************************
+*/
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
+
+/*!40101 SET SQL_MODE=''*/;
+
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`videotiendajandy` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
---
--- Table structure for table `vj_alquiler`
---
+USE `videotiendajandy`;
+
+/*Table structure for table `vj_alquiler` */
 
 DROP TABLE IF EXISTS `vj_alquiler`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `vj_alquiler` (
   `id_alquiler` int(11) NOT NULL AUTO_INCREMENT,
   `fecha_alquiler` date DEFAULT NULL,
@@ -38,213 +34,98 @@ CREATE TABLE `vj_alquiler` (
   CONSTRAINT `fk_mv_alquiler_mv_clientes1` FOREIGN KEY (`vj_clientes_id_cliente`) REFERENCES `vj_clientes` (`id_cliente`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_mv_alquiler_mv_peliculas1` FOREIGN KEY (`vj_peliculas_id_peliculas`) REFERENCES `vj_peliculas` (`id_peliculas`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `vj_alquiler`
---
+/*Data for the table `vj_alquiler` */
 
-LOCK TABLES `vj_alquiler` WRITE;
-/*!40000 ALTER TABLE `vj_alquiler` DISABLE KEYS */;
-INSERT INTO `vj_alquiler` VALUES (1,'2016-06-26','2016-06-28',15000,0,6,64854136);
-/*!40000 ALTER TABLE `vj_alquiler` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `vj_alquiler_AFTER_INSERT` AFTER INSERT ON `vj_alquiler` FOR EACH ROW BEGIN
-	UPDATE vj_peliculas SET estado_alquiler = 1 WHERE id_peliculas = NEW.vj_peliculas_id_peliculas;
-END */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `vj_alquiler_AFTER_UPDATE` AFTER UPDATE ON `vj_alquiler` FOR EACH ROW BEGIN
-	INSERT INTO vj_historial_alquiladas (id_historial, vj_peliculas_id_peliculas, vj_clientes_id_cliente) VALUES ('0', NEW.vj_peliculas_id_peliculas, NEW.vj_clientes_id_cliente, now());
-END */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
+insert  into `vj_alquiler`(`id_alquiler`,`fecha_alquiler`,`fecha_entrega`,`valor_a_pagar`,`cancelado_caja`,`vj_peliculas_id_peliculas`,`vj_clientes_id_cliente`) values (1,'2016-06-26','2016-06-28',15000,0,6,64854136);
 
---
--- Table structure for table `vj_cargos`
---
+/*Table structure for table `vj_cargos` */
 
 DROP TABLE IF EXISTS `vj_cargos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `vj_cargos` (
   `id_cargo` int(11) NOT NULL AUTO_INCREMENT,
   `nombre_cargo` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_cargo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `vj_cargos`
---
+/*Data for the table `vj_cargos` */
 
-LOCK TABLES `vj_cargos` WRITE;
-/*!40000 ALTER TABLE `vj_cargos` DISABLE KEYS */;
-INSERT INTO `vj_cargos` VALUES (1,'Administrador'),(2,'Empleado'),(3,'Auxiliar'),(4,'Cliente');
-/*!40000 ALTER TABLE `vj_cargos` ENABLE KEYS */;
-UNLOCK TABLES;
+insert  into `vj_cargos`(`id_cargo`,`nombre_cargo`) values (1,'Jefe'),(2,'Empleado'),(3,'Auxiliar'),(4,'Cliente');
 
---
--- Table structure for table `vj_categorias`
---
+/*Table structure for table `vj_categorias` */
 
 DROP TABLE IF EXISTS `vj_categorias`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `vj_categorias` (
   `id_categoria` int(11) NOT NULL AUTO_INCREMENT,
   `nombre_categoria` varchar(50) DEFAULT NULL,
-  `fecha_creacion` datetime DEFAULT NULL,
+  `fecha_creacion` date DEFAULT NULL,
   `creado_por` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_categoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `vj_categorias`
---
+/*Data for the table `vj_categorias` */
 
-LOCK TABLES `vj_categorias` WRITE;
-/*!40000 ALTER TABLE `vj_categorias` DISABLE KEYS */;
-INSERT INTO `vj_categorias` VALUES (1,'Accion','2018-06-25 00:00:00',1),(2,'Drama','2018-06-25 00:00:00',1),(3,'Comedia','2018-06-25 00:00:00',1),(4,'Terror','2018-05-25 00:00:00',1);
-/*!40000 ALTER TABLE `vj_categorias` ENABLE KEYS */;
-UNLOCK TABLES;
+insert  into `vj_categorias`(`id_categoria`,`nombre_categoria`,`fecha_creacion`,`creado_por`) values (1,'Accion dos','2018-06-25',1),(2,'Drama ','2018-06-25',1),(3,'Comedia','2018-06-25',1),(4,'Terror','2018-05-25',1),(5,'Terror y Accion','2220-02-12',1),(6,'Infantil','2018-11-14',1);
 
---
--- Table structure for table `vj_clientes`
---
+/*Table structure for table `vj_clientes` */
 
 DROP TABLE IF EXISTS `vj_clientes`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `vj_clientes` (
   `id_cliente` int(11) NOT NULL AUTO_INCREMENT,
   `nombres` varchar(45) DEFAULT NULL,
   `apellidos` varchar(45) DEFAULT NULL,
   `direccion` varchar(45) DEFAULT NULL,
   `correo` varchar(45) DEFAULT NULL,
-  `telefono` int(15) DEFAULT NULL,
+  `telefono` bigint(15) DEFAULT NULL,
   PRIMARY KEY (`id_cliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=92514788 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=92545613 DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `vj_clientes`
---
+/*Data for the table `vj_clientes` */
 
-LOCK TABLES `vj_clientes` WRITE;
-/*!40000 ALTER TABLE `vj_clientes` DISABLE KEYS */;
-INSERT INTO `vj_clientes` VALUES (64854136,'Carmen','Payares','Cra 50','carmen@outlook.com',2741415),(92147986,'Carlos','Alvarez','Calle 20','carlos@hotmail.com',2814731),(92514787,'Juan','Perez','Calle 2','juan@gmail.com',2820141);
-/*!40000 ALTER TABLE `vj_clientes` ENABLE KEYS */;
-UNLOCK TABLES;
+insert  into `vj_clientes`(`id_cliente`,`nombres`,`apellidos`,`direccion`,`correo`,`telefono`) values (222,'Ñato','Tavares','calle del ogro','ñato@Gmail.com',3444),(777,'Blanca','Nieves','Calle fake','banca@gmail.com',2341212),(55544,'Prueba','Prueba','calle fake','orueba@gmail.com',432423),(242342,'Dr Malito','Davila','dad','malito@gmail.com',3004231122),(848938,'carlos','gonzalez','calle 5','carlos@gmail.com',5859288),(5555555,'Maria','Magdalena','calle 34 # 3-42','Mariamag@gmail.com',2765467),(64854136,'Carmen','Payares','Cra 50','carmen@outlook.com',2741415),(85649939,'alberto','solar','calle 20','alberto@gmail.com',78744),(92147986,'Carlos','Alvarez','Calle 20','carlos@hotmail.com',2814731),(92514787,'Juan','Perez','Calle 2','juan@gmail.com',2820141),(92543211,'Jorge','Gonzales','calle 23 # 42-32','jorge@hotmail.com',3114553211),(92545612,'juan','perez','cra 8','juan@gmail.com',30011231);
 
---
--- Table structure for table `vj_empleado`
---
+/*Table structure for table `vj_empleado` */
 
 DROP TABLE IF EXISTS `vj_empleado`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `vj_empleado` (
   `id_empleado` int(11) NOT NULL,
-  `nombres` varchar(50) DEFAULT NULL,
-  `apellidos` varchar(50) DEFAULT NULL,
-  `direccion` varchar(50) DEFAULT NULL,
-  `telefono` int(11) DEFAULT NULL,
-  `vj_cargos_id_cargo` int(11) NOT NULL,
-  `vj_roles_id_rol` int(11) NOT NULL,
+  `nombres` varchar(100) DEFAULT NULL,
+  `apellidos` varchar(100) DEFAULT NULL,
+  `direccion` varchar(100) DEFAULT NULL,
+  `telefono` bigint(11) DEFAULT NULL,
+  `vj_cargos_id_cargo` int(6) DEFAULT NULL,
+  `vj_roles_id_rol` int(6) DEFAULT NULL,
   PRIMARY KEY (`id_empleado`),
   KEY `fk_mv_empleado_mv_cargos1_idx` (`vj_cargos_id_cargo`),
-  KEY `fk_mv_empleado_mv_roles1_idx` (`vj_roles_id_rol`),
-  CONSTRAINT `fk_mv_empleado_mv_cargos1` FOREIGN KEY (`vj_cargos_id_cargo`) REFERENCES `vj_cargos` (`id_cargo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_mv_empleado_mv_roles1` FOREIGN KEY (`vj_roles_id_rol`) REFERENCES `vj_roles` (`id_rol`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `fk_mv_empleado_mv_roles1_idx` (`vj_roles_id_rol`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `vj_empleado`
---
+/*Data for the table `vj_empleado` */
 
-LOCK TABLES `vj_empleado` WRITE;
-/*!40000 ALTER TABLE `vj_empleado` DISABLE KEYS */;
-INSERT INTO `vj_empleado` VALUES (92147369,'Jorge','Davila','Cra 50',2824711,3,3),(92471142,'Dayro','Garay','Cra 10',2781474,2,2),(1102789456,'Ronaldo','Pestana','Calle 20',2824744,1,1);
-/*!40000 ALTER TABLE `vj_empleado` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `vj_empleado_AFTER_INSERT` AFTER INSERT ON `vj_empleado` FOR EACH ROW BEGIN
-	INSERT INTO vj_empleado_fecha_ingreso (id_ingreso, vj_empleado_id_empleado) VALUES ('0', NEW.id_empleado, now());
-END */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
+insert  into `vj_empleado`(`id_empleado`,`nombres`,`apellidos`,`direccion`,`telefono`,`vj_cargos_id_cargo`,`vj_roles_id_rol`) values (33333,'Tinorv','Heterra','calle quinta',300987654,2,3),(8978787,'prueba','prueba','calle fake',7376647,3,3),(64555444,'Maria ','Antonieta','Calle 67 # 45-90 Barrio Puerta Roja',2765544,2,3),(92599398,'Ogro','Mogro','Pontevedra',733874848,3,3),(1102789456,'Administrador','Sistema','Calle 20',3013131233,1,1);
 
---
--- Table structure for table `vj_empleado_fecha_ingreso`
---
+/*Table structure for table `vj_empleado_fecha_ingreso` */
 
 DROP TABLE IF EXISTS `vj_empleado_fecha_ingreso`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `vj_empleado_fecha_ingreso` (
   `id_ingreso` int(11) NOT NULL AUTO_INCREMENT,
   `vj_empleado_id_empleado` int(11) DEFAULT NULL,
   `fecha_creacion` datetime DEFAULT NULL,
   PRIMARY KEY (`id_ingreso`),
-  KEY `fk_empleado_ingreso_idx` (`vj_empleado_id_empleado`),
-  CONSTRAINT `fk_empleado_ingreso` FOREIGN KEY (`vj_empleado_id_empleado`) REFERENCES `vj_empleado` (`id_empleado`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `fk_empleado_ingreso_idx` (`vj_empleado_id_empleado`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `vj_empleado_fecha_ingreso`
---
+/*Data for the table `vj_empleado_fecha_ingreso` */
 
-LOCK TABLES `vj_empleado_fecha_ingreso` WRITE;
-/*!40000 ALTER TABLE `vj_empleado_fecha_ingreso` DISABLE KEYS */;
-/*!40000 ALTER TABLE `vj_empleado_fecha_ingreso` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `vj_historial_alquiladas`
---
+/*Table structure for table `vj_historial_alquiladas` */
 
 DROP TABLE IF EXISTS `vj_historial_alquiladas`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `vj_historial_alquiladas` (
   `id_historial` int(11) NOT NULL AUTO_INCREMENT,
   `vj_peliculas_id_peliculas` int(11) DEFAULT NULL,
@@ -256,24 +137,13 @@ CREATE TABLE `vj_historial_alquiladas` (
   CONSTRAINT `fk_historia_peliculas_cliente` FOREIGN KEY (`vj_clientes_id_cliente`) REFERENCES `vj_clientes` (`id_cliente`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_historial_peliculas` FOREIGN KEY (`vj_peliculas_id_peliculas`) REFERENCES `vj_peliculas` (`id_peliculas`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `vj_historial_alquiladas`
---
+/*Data for the table `vj_historial_alquiladas` */
 
-LOCK TABLES `vj_historial_alquiladas` WRITE;
-/*!40000 ALTER TABLE `vj_historial_alquiladas` DISABLE KEYS */;
-/*!40000 ALTER TABLE `vj_historial_alquiladas` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `vj_login_cliente`
---
+/*Table structure for table `vj_login_cliente` */
 
 DROP TABLE IF EXISTS `vj_login_cliente`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `vj_login_cliente` (
   `id_login` int(11) NOT NULL AUTO_INCREMENT,
   `user_cliente` varchar(45) DEFAULT NULL,
@@ -285,25 +155,16 @@ CREATE TABLE `vj_login_cliente` (
   KEY `fk_mv_login_mv_roles1_idx` (`vj_roles_id_rol`),
   CONSTRAINT `fk_mv_login_mv_clientes1` FOREIGN KEY (`vj_clientes_id_cliente`) REFERENCES `vj_clientes` (`id_cliente`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_mv_login_mv_roles1` FOREIGN KEY (`vj_roles_id_rol`) REFERENCES `vj_roles` (`id_rol`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `vj_login_cliente`
---
+/*Data for the table `vj_login_cliente` */
 
-LOCK TABLES `vj_login_cliente` WRITE;
-/*!40000 ALTER TABLE `vj_login_cliente` DISABLE KEYS */;
-/*!40000 ALTER TABLE `vj_login_cliente` ENABLE KEYS */;
-UNLOCK TABLES;
+insert  into `vj_login_cliente`(`id_login`,`user_cliente`,`pass_cliente`,`vj_clientes_id_cliente`,`vj_roles_id_rol`) values (1,'85649939','admin',85649939,4),(2,'5555555','1',5555555,4),(3,'92543211','1',92543211,4),(4,'','',777,4),(5,'55544','1',55544,4);
 
---
--- Table structure for table `vj_login_empleado`
---
+/*Table structure for table `vj_login_empleado` */
 
 DROP TABLE IF EXISTS `vj_login_empleado`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `vj_login_empleado` (
   `id_login_empleado` int(11) NOT NULL,
   `user_emp` varchar(45) DEFAULT NULL,
@@ -312,29 +173,17 @@ CREATE TABLE `vj_login_empleado` (
   `vj_empleado_id_empleado` int(11) NOT NULL,
   PRIMARY KEY (`id_login_empleado`),
   KEY `fk_mv_login_empleado_mv_roles1_idx` (`vj_roles_id_rol`),
-  KEY `fk_mv_login_empleado_mv_empleado1_idx` (`vj_empleado_id_empleado`),
-  CONSTRAINT `fk_mv_login_empleado_mv_empleado1` FOREIGN KEY (`vj_empleado_id_empleado`) REFERENCES `vj_empleado` (`id_empleado`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_mv_login_empleado_mv_roles1` FOREIGN KEY (`vj_roles_id_rol`) REFERENCES `vj_roles` (`id_rol`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `fk_mv_login_empleado_mv_empleado1_idx` (`vj_empleado_id_empleado`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `vj_login_empleado`
---
+/*Data for the table `vj_login_empleado` */
 
-LOCK TABLES `vj_login_empleado` WRITE;
-/*!40000 ALTER TABLE `vj_login_empleado` DISABLE KEYS */;
-INSERT INTO `vj_login_empleado` VALUES (1102789456,'admin','4321',1,1102789456);
-/*!40000 ALTER TABLE `vj_login_empleado` ENABLE KEYS */;
-UNLOCK TABLES;
+insert  into `vj_login_empleado`(`id_login_empleado`,`user_emp`,`pass_emp`,`vj_roles_id_rol`,`vj_empleado_id_empleado`) values (0,'92456700','1234',92456700,4),(92599398,'Ogro','2',3,92599398),(1102789456,'admin','4321',1,1102789456);
 
---
--- Table structure for table `vj_peliculas`
---
+/*Table structure for table `vj_peliculas` */
 
 DROP TABLE IF EXISTS `vj_peliculas`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `vj_peliculas` (
   `id_peliculas` int(11) NOT NULL AUTO_INCREMENT,
   `nombre_pelicula` varchar(45) DEFAULT NULL,
@@ -344,32 +193,22 @@ CREATE TABLE `vj_peliculas` (
   `imagen` text,
   `estado_alquiler` int(11) DEFAULT NULL,
   `estado_reserva` int(11) DEFAULT NULL,
-  `fecha_registro` datetime DEFAULT NULL,
+  `fecha_registro` date DEFAULT NULL,
   `creado_por` int(11) DEFAULT NULL,
   `vj_categorias_id_categoria` int(11) NOT NULL,
   PRIMARY KEY (`id_peliculas`),
   KEY `fk_mv_peliculas_mv_categorias1_idx` (`vj_categorias_id_categoria`),
   CONSTRAINT `fk_vj_peliculas_vj_categorias` FOREIGN KEY (`vj_categorias_id_categoria`) REFERENCES `vj_categorias` (`id_categoria`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `vj_peliculas`
---
+/*Data for the table `vj_peliculas` */
 
-LOCK TABLES `vj_peliculas` WRITE;
-/*!40000 ALTER TABLE `vj_peliculas` DISABLE KEYS */;
-INSERT INTO `vj_peliculas` VALUES (1,'Al filo del Mañana','2015-05-02','140','...','alfilo.jpg',0,0,'2015-06-25 00:00:00',1,1),(2,'Avengers: Infinity War','2018-05-02','130','...','avenger.jpg',0,0,'2015-06-25 00:00:00',1,1),(3,'El Conjuro','2017-04-10','120','...','elconjuro.jpg',0,0,'2015-06-25 00:00:00',1,4),(4,'Guerra de Papas 2','2018-04-20','120','...','guerrapapas.jpg',0,0,'2015-06-25 00:00:00',1,3),(5,'12 Años de Esclavitud','2016-06-14','120','...','12anos-2.jpg',0,0,'2015-06-25 00:00:00',1,2),(6,'Armagedon','2000-04-05','120','...','armagedon.jpg',1,1,'2015-06-26 00:00:00',1,1),(7,'Los Increibles 2','2018-07-04','110','...','losincreibles.jpg',0,0,'2018-07-05 00:00:00',1,1);
-/*!40000 ALTER TABLE `vj_peliculas` ENABLE KEYS */;
-UNLOCK TABLES;
+insert  into `vj_peliculas`(`id_peliculas`,`nombre_pelicula`,`fecha_estreno`,`duracion`,`sinopsis`,`imagen`,`estado_alquiler`,`estado_reserva`,`fecha_registro`,`creado_por`,`vj_categorias_id_categoria`) values (1,'Al filo del Mañana 1','2015-05-02','140','...','alfilo.jpg',0,0,'2015-06-25',1,1),(2,'Avengers: Infinity War','2018-05-02','160','...','avenger.jpg',0,0,'2015-06-25',1,2),(3,'El Conjuro 7','2017-04-10','160','...','elconjuro.jpg',0,0,'2015-06-25',1,4),(5,'12 Años de Esclavitud','2016-06-14','120','...','12anos-2.jpg',0,0,'2015-06-25',1,1),(6,'Armagedon','2000-04-05','160','...','armagedon.jpg',1,1,'2015-06-26',1,1),(7,'Los Increibles 3','2018-07-04','110','...','losincreibles.jpg',0,0,'2018-07-05',1,1),(9,'La era de hielo 2','1990-12-01','120','...','losincreibles.jpg',1,1,'2018-11-07',1,3),(10,'El señor de los anillos ','2000-11-03','160','...','losincreibles.jpg',1,1,'2018-11-07',1,1),(15,'Los Pitufos','2018-07-04','120','...','losincreibles.jpg',1,1,'2018-11-14',1,3);
 
---
--- Table structure for table `vj_reservas`
---
+/*Table structure for table `vj_reservas` */
 
 DROP TABLE IF EXISTS `vj_reservas`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `vj_reservas` (
   `id_reservas` int(11) NOT NULL AUTO_INCREMENT,
   `fecha_reserva` datetime DEFAULT NULL,
@@ -382,66 +221,29 @@ CREATE TABLE `vj_reservas` (
   CONSTRAINT `fk_mv_reservas_mv_clientes1` FOREIGN KEY (`vj_clientes_id_cliente`) REFERENCES `vj_clientes` (`id_cliente`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_mv_reservas_mv_peliculas1` FOREIGN KEY (`vj_peliculas_id_peliculas`) REFERENCES `vj_peliculas` (`id_peliculas`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `vj_reservas`
---
+/*Data for the table `vj_reservas` */
 
-LOCK TABLES `vj_reservas` WRITE;
-/*!40000 ALTER TABLE `vj_reservas` DISABLE KEYS */;
-INSERT INTO `vj_reservas` VALUES (1,'2018-06-26 00:00:00','Web',64854136,6);
-/*!40000 ALTER TABLE `vj_reservas` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `vj_reservas_AFTER_INSERT` AFTER INSERT ON `vj_reservas` FOR EACH ROW BEGIN
-	UPDATE vj_peliculas SET estado_reserva = 1 WHERE id_peliculas = NEW.vj_peliculas_id_peliculas;
-END */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
+insert  into `vj_reservas`(`id_reservas`,`fecha_reserva`,`medio_reserva`,`vj_clientes_id_cliente`,`vj_peliculas_id_peliculas`) values (1,'2018-06-26 00:00:00','Web',64854136,6);
 
---
--- Table structure for table `vj_roles`
---
+/*Table structure for table `vj_roles` */
 
 DROP TABLE IF EXISTS `vj_roles`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `vj_roles` (
   `id_rol` int(11) NOT NULL AUTO_INCREMENT,
   `nombre_rol` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_rol`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `vj_roles`
---
+/*Data for the table `vj_roles` */
 
-LOCK TABLES `vj_roles` WRITE;
-/*!40000 ALTER TABLE `vj_roles` DISABLE KEYS */;
-INSERT INTO `vj_roles` VALUES (1,'Administrador'),(2,'Empleado'),(3,'Auxiliar'),(4,'Cliente');
-/*!40000 ALTER TABLE `vj_roles` ENABLE KEYS */;
-UNLOCK TABLES;
+insert  into `vj_roles`(`id_rol`,`nombre_rol`) values (1,'Administrador'),(2,'Empleado'),(3,'Auxiliar'),(4,'Cliente');
 
---
--- Table structure for table `vj_tarifas`
---
+/*Table structure for table `vj_tarifas` */
 
 DROP TABLE IF EXISTS `vj_tarifas`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `vj_tarifas` (
   `id_tarifa` int(11) NOT NULL AUTO_INCREMENT,
   `valor_tarifa` int(11) DEFAULT NULL,
@@ -451,25 +253,206 @@ CREATE TABLE `vj_tarifas` (
   KEY `vj_peliculas_id_peliculas_idx` (`vj_categorias_id_categoria`),
   CONSTRAINT `vj_peliculas_id_peliculas` FOREIGN KEY (`vj_categorias_id_categoria`) REFERENCES `vj_categorias` (`id_categoria`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `vj_tarifas`
---
+/*Data for the table `vj_tarifas` */
 
-LOCK TABLES `vj_tarifas` WRITE;
-/*!40000 ALTER TABLE `vj_tarifas` DISABLE KEYS */;
-INSERT INTO `vj_tarifas` VALUES (1,15000,3,1),(2,10000,2,2),(3,8000,2,3),(4,8000,2,4);
-/*!40000 ALTER TABLE `vj_tarifas` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+insert  into `vj_tarifas`(`id_tarifa`,`valor_tarifa`,`tiempo_alquiler`,`vj_categorias_id_categoria`) values (1,15000,3,1),(2,10000,2,2),(3,8000,2,3),(4,8000,2,4);
+
+/* Trigger structure for table `vj_alquiler` */
+
+DELIMITER $$
+
+/*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `vj_alquiler_AFTER_INSERT` */$$
+
+/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `vj_alquiler_AFTER_INSERT` AFTER INSERT ON `vj_alquiler` FOR EACH ROW BEGIN
+	UPDATE vj_peliculas SET estado_alquiler = 1 WHERE id_peliculas = NEW.vj_peliculas_id_peliculas;
+END */$$
+
+
+DELIMITER ;
+
+/* Trigger structure for table `vj_alquiler` */
+
+DELIMITER $$
+
+/*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `vj_alquiler_AFTER_UPDATE` */$$
+
+/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `vj_alquiler_AFTER_UPDATE` AFTER UPDATE ON `vj_alquiler` FOR EACH ROW BEGIN
+	INSERT INTO vj_historial_alquiladas (id_historial, vj_peliculas_id_peliculas, vj_clientes_id_cliente) VALUES ('0', NEW.vj_peliculas_id_peliculas, NEW.vj_clientes_id_cliente, now());
+END */$$
+
+
+DELIMITER ;
+
+/* Trigger structure for table `vj_reservas` */
+
+DELIMITER $$
+
+/*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `vj_reservas_AFTER_INSERT` */$$
+
+/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `vj_reservas_AFTER_INSERT` AFTER INSERT ON `vj_reservas` FOR EACH ROW BEGIN
+	UPDATE vj_peliculas SET estado_reserva = 1 WHERE id_peliculas = NEW.vj_peliculas_id_peliculas;
+END */$$
+
+
+DELIMITER ;
+
+/* Function  structure for function  `buscaClientePorID` */
+
+/*!50003 DROP FUNCTION IF EXISTS `buscaClientePorID` */;
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`movies`@`%` FUNCTION `buscaClientePorID`(`idcliente` INT(11)) RETURNS char(255) CHARSET latin1
+BEGIN
+	DECLARE resultado CHAR(255);
+	SELECT CONCAT(nombres, ' ', apellidos) as nombreEmpleado INTO resultado FROM vj_clientes WHERE id_cliente = idcliente;
+    RETURN resultado;
+END */$$
+DELIMITER ;
+
+/* Function  structure for function  `buscaPeliculaPorID` */
+
+/*!50003 DROP FUNCTION IF EXISTS `buscaPeliculaPorID` */;
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`movies`@`%` FUNCTION `buscaPeliculaPorID`(`id` INT(11)) RETURNS char(255) CHARSET latin1
+BEGIN
+	DECLARE nombre char(255);    
+	SELECT nombre_pelicula INTO nombre FROM vj_peliculas WHERE id_peliculas = id;
+	RETURN nombre;
+END */$$
+DELIMITER ;
+
+/* Function  structure for function  `datosCliente` */
+
+/*!50003 DROP FUNCTION IF EXISTS `datosCliente` */;
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`movies`@`%` FUNCTION `datosCliente`(`cname` CHAR(100), `clname` CHAR(100)) RETURNS char(100) CHARSET latin1
+BEGIN
+	DECLARE NombresCompleto CHAR(200);
+    SET NombresCompleto = CONCAT(cname, ' ', clname);
+    RETURN NombresCompleto;
+END */$$
+DELIMITER ;
+
+/* Function  structure for function  `datosEmpleado` */
+
+/*!50003 DROP FUNCTION IF EXISTS `datosEmpleado` */;
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`movies`@`%` FUNCTION `datosEmpleado`(`cname` CHAR(100), `clname` CHAR(100)) RETURNS char(100) CHARSET latin1
+BEGIN
+	DECLARE NombresCompleto CHAR(200);
+    SET NombresCompleto = CONCAT(cname, ' ', clname);
+    RETURN NombresCompleto;
+END */$$
+DELIMITER ;
+
+/* Function  structure for function  `valorMaximo` */
+
+/*!50003 DROP FUNCTION IF EXISTS `valorMaximo` */;
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`movies`@`%` FUNCTION `valorMaximo`(`field` INT(100)) RETURNS int(11)
+BEGIN
+	DECLARE maximo INT(11);
+	SELECT max(field) INTO maximo FROM vj_tarifas LIMIT 1;
+	RETURN maximo;
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `resumenClientes` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `resumenClientes` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `resumenClientes`()
+BEGIN
+	SELECT id_cliente as cedula, nombres, apellidos, direccion, correo, telefono FROM vj_clientes;
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `resumenEmpleados` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `resumenEmpleados` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `resumenEmpleados`()
+BEGIN
+	SELECT 
+		ve.id_empleado as cedula_empleado, ve.nombres, ve.apellidos, vc.nombre_cargo 
+	FROM 
+		vj_empleado ve 
+        INNER JOIN vj_cargos vc ON ve.vj_cargos_id_cargo = vc.id_cargo;
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `resumenEstadoPeliculasAlquiladas` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `resumenEstadoPeliculasAlquiladas` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `resumenEstadoPeliculasAlquiladas`()
+BEGIN
+	SELECT nombre_pelicula, (case estado_alquiler when 1 then 'Alquilada' else 'Disponible' end) as estado FROM vj_peliculas;
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `resumenPeliculas` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `resumenPeliculas` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `resumenPeliculas`()
+BEGIN
+	SELECT 
+		vp.nombre_pelicula, 
+		vp.fecha_estreno, 
+		vp.duracion, 
+		vp.sinopsis, 
+		vp.imagen, 
+		vp.estado_alquiler, 
+		vp.estado_reserva, vc.nombre_categoria
+	FROM 
+		vj_peliculas vp JOIN vj_categorias vc ON vp.vj_categorias_id_categoria = vc.id_categoria;
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `resumenVentas` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `resumenVentas` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`movies`@`%` PROCEDURE `resumenVentas`()
+BEGIN
+	SELECT sum(valor_a_pagar) as TotalVentas FROM vj_alquiler;
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `verReservas` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `verReservas` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `verReservas`()
+BEGIN
+	SELECT 
+		vc.nombres, vc.apellidos, vp.nombre_pelicula, vr.medio_reserva, vr.fecha_reserva 
+	FROM 
+		vj_reservas vr 
+        INNER JOIN vj_clientes vc ON vr.vj_clientes_id_cliente = vc.id_cliente 
+        INNER JOIN vj_peliculas vp ON vr.vj_peliculas_id_peliculas = vp.id_peliculas;
+END */$$
+DELIMITER ;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2018-07-30 16:57:07
