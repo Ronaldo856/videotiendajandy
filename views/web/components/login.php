@@ -33,11 +33,11 @@
 				<form action="<?php echo BASE_URL?>?view=initsessionC" method="post">
 				  <div>
 					<span>Documento de Identidad<label>*</label></span>
-					<input type="text"> 
+					<input type="text" name="userc"> 
 				  </div>
 				  <div>
 					<span>Contraseña<label>*</label></span>
-					<input type="password"> 
+					<input type="password" name="pass"> 
 				  </div>
 				  <a class="forgot" href="#">¿Olvidó su contraseña?</a>
 				  <input type="submit" class='acount-btn' style='outline: none;' border='0' value="Login">

@@ -12,7 +12,7 @@ class usuarioempleado
         $sql = "SELECT user_emp, pass_emp FROM vj_login_empleado WHERE user_emp = '$user' AND pass_emp = '$pass' LIMIT 1";        
         $result = $database->query($sql);
 
-        if($result > 0)
+        if(!$database->rows($result))
             return true;
 
         return false;
@@ -32,10 +32,11 @@ class usuarioempleado
         return $dataemp['nombres'] . " " . $dataemp['apellidos'];
     }
 
-    static function agregaEmpleado($documento, $pass)
+    static function agregaEmpleado($documento, $user, $pass, $rol)
     {
         $database = new database();
         $sql = "INSERT INTO vj_login_empleado (id_login_empleado, user_emp, pass_emp, vj_roles_id_rol, vj_empleado_id_empleado) VALUES ('$documento', '$user', '$pass', '$rol', '$documento')";
+        
         $resultado = $database->query($sql);
         
         return $resultado;

@@ -47,13 +47,13 @@ class loadpage
                         $userc = $_POST['userc'];
                         $passc = $_POST['passc'];
 
-                        if(usuarioempleado::initSession($userc, $passc))
-                            {
-                                $_SESSION['vj:userc'] = $userc;
-                                header("Location : " . BASE_URL . "??web/components/headertop");
-                            }
-                                else
-                                header("Location : " . BASE_URL . "?view=entrar&error=1");
+                        if(usuarios::initSession($userc, $passc))
+                        {
+                            $_SESSION['vj:userc'] = $userc;
+                            header("Location : " . BASE_URL );
+                        }
+                            else
+                            header("Location : " . BASE_URL . "?view=entrar&error=1");
                     }
             break;
 
@@ -157,7 +157,7 @@ class loadpage
                             
                             if($cliente->agregarCliente() > 0)
                             {
-                                usuarios::agregaUsuario($_POST['documento'], $_POST['contrasena']);
+                                usuarios::agregaUsuario($_POST['documento'], $_POST['contrasena'], $_POST['documento'], 4);
                                 header("Location : " . BASE_URL . '?view=registrar&success=1');
                             }
                         }
@@ -231,7 +231,7 @@ class loadpage
                         
                         if($empleado->agregarEmpleado() > 0)
                         {
-                            usuarioempleado::agregaEmpleado($_POST['documento'], $_POST['contrasena']);
+                            usuarioempleado::agregaEmpleado($_POST['documento'], $_POST['nombres'], $_POST['contrasena'], $_POST['rol']);
                             header("Location : " . BASE_URL . '?view=registro&success=1');
                         }
                     }

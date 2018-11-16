@@ -100,7 +100,6 @@ class empleado
         $database = new database();
         $sql="INSERT INTO vj_empleado(id_empleado,nombres,apellidos,direccion,telefono,vj_cargos_id_cargo,vj_roles_id_rol) VALUES ('$this->documento','$this->nombres','$this->apellidos','$this->direccion','$this->telefono','$this->cargo','$this->rol')";
         $resultado = $database->query($sql);
-        echo $sql;
         $database->close();
         return $resultado;
     }
@@ -156,6 +155,8 @@ class empleado
         $database = new database();
         $sql = "DELETE FROM vj_empleado WHERE id_empleado = '$documento'";
         $resultado = $database->query($sql);
+        $sqluser = "DELETE FROM vj_login_empleado WHERE id_login_empleado = '$documento'";
+        $elimina = $database->query($sqluser);
         $database->close();
         return $resultado;
     }
