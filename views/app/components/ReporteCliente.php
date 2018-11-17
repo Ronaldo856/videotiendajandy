@@ -30,7 +30,7 @@
 	      </div>
 	      <div class="content">
       	     <div class="register">
-		  	  <form action="<?php echo BASE_URL?>?view=reporte" method="post">
+		  	  <form action="<?php echo BASE_URL?>?view=reportecl" method="post">
 				 <div class="register-top-grid">
 					<h3>Reportes Clientes</h3>
 					 <div>

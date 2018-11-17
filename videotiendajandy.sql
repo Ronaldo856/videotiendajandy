@@ -37,8 +37,6 @@ CREATE TABLE `vj_alquiler` (
 
 /*Data for the table `vj_alquiler` */
 
-insert  into `vj_alquiler`(`id_alquiler`,`fecha_alquiler`,`fecha_entrega`,`valor_a_pagar`,`cancelado_caja`,`vj_peliculas_id_peliculas`,`vj_clientes_id_cliente`) values (1,'2016-06-26','2016-06-28',15000,0,6,64854136);
-
 /*Table structure for table `vj_cargos` */
 
 DROP TABLE IF EXISTS `vj_cargos`;
@@ -67,7 +65,7 @@ CREATE TABLE `vj_categorias` (
 
 /*Data for the table `vj_categorias` */
 
-insert  into `vj_categorias`(`id_categoria`,`nombre_categoria`,`fecha_creacion`,`creado_por`) values (1,'Accion dos','2018-06-25',1),(2,'Drama ','2018-06-25',1),(3,'Comedia','2018-06-25',1),(4,'Terror','2018-05-25',1),(5,'Terror y Accion','2220-02-12',1),(6,'Infantil','2018-11-14',1);
+insert  into `vj_categorias`(`id_categoria`,`nombre_categoria`,`fecha_creacion`,`creado_por`) values (1,'Accion ','2018-06-25',1),(2,'Drama ','2018-06-25',1),(3,'Comedia','2018-06-25',1),(4,'Terror','2018-05-25',1);
 
 /*Table structure for table `vj_clientes` */
 
@@ -81,11 +79,11 @@ CREATE TABLE `vj_clientes` (
   `correo` varchar(45) DEFAULT NULL,
   `telefono` bigint(15) DEFAULT NULL,
   PRIMARY KEY (`id_cliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=92545613 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=92566778 DEFAULT CHARSET=utf8;
 
 /*Data for the table `vj_clientes` */
 
-insert  into `vj_clientes`(`id_cliente`,`nombres`,`apellidos`,`direccion`,`correo`,`telefono`) values (222,'Ñato','Tavares','calle del ogro','ñato@Gmail.com',3444),(777,'Blanca','Nieves','Calle fake','banca@gmail.com',2341212),(55544,'Prueba','Prueba','calle fake','orueba@gmail.com',432423),(242342,'Dr Malito','Davila','dad','malito@gmail.com',3004231122),(848938,'carlos','gonzalez','calle 5','carlos@gmail.com',5859288),(5555555,'Maria','Magdalena','calle 34 # 3-42','Mariamag@gmail.com',2765467),(64854136,'Carmen','Payares','Cra 50','carmen@outlook.com',2741415),(85649939,'alberto','solar','calle 20','alberto@gmail.com',78744),(92147986,'Carlos','Alvarez','Calle 20','carlos@hotmail.com',2814731),(92514787,'Juan','Perez','Calle 2','juan@gmail.com',2820141),(92543211,'Jorge','Gonzales','calle 23 # 42-32','jorge@hotmail.com',3114553211),(92545612,'juan','perez','cra 8','juan@gmail.com',30011231);
+insert  into `vj_clientes`(`id_cliente`,`nombres`,`apellidos`,`direccion`,`correo`,`telefono`) values (777,'Blanca','Nieves','Calle fake','banca@gmail.com',2341212),(55544,'Prueba','Prueba','calle fake','orueba@gmail.com',432423),(5555555,'Maria','Magdalena','calle 34 # 3-42','Mariamag@gmail.com',2765467),(64854136,'Carmen','Payares','Cra 50','carmen@outlook.com',2741415),(85649939,'alberto','solar','calle 20','alberto@gmail.com',78744),(92543211,'Jorge','Gonzales','calle 23 # 42-32','jorge@hotmail.com',3114553211),(92566777,'Karl','Marquez','cra 54','karl@gmail.com',2786544);
 
 /*Table structure for table `vj_empleado` */
 
@@ -106,7 +104,7 @@ CREATE TABLE `vj_empleado` (
 
 /*Data for the table `vj_empleado` */
 
-insert  into `vj_empleado`(`id_empleado`,`nombres`,`apellidos`,`direccion`,`telefono`,`vj_cargos_id_cargo`,`vj_roles_id_rol`) values (33333,'Tinorv','Heterra','calle quinta',300987654,2,3),(8978787,'prueba','prueba','calle fake',7376647,3,3),(64555444,'Maria ','Antonieta','Calle 67 # 45-90 Barrio Puerta Roja',2765544,2,3),(92599398,'Ogro','Mogro','Pontevedra',733874848,3,3),(1102789456,'Administrador','Sistema','Calle 20',3013131233,1,1);
+insert  into `vj_empleado`(`id_empleado`,`nombres`,`apellidos`,`direccion`,`telefono`,`vj_cargos_id_cargo`,`vj_roles_id_rol`) values (33333,'Tinorv','Hererra','calle quinta',300987654,2,3),(64555444,'Maria ','Antonieta','Calle 67 # 45-90 Barrio Puerta Roja',2765544,2,3),(1102789456,'Administrador','Sistema','Calle 20',3013131233,1,1);
 
 /*Table structure for table `vj_empleado_fecha_ingreso` */
 
@@ -155,11 +153,11 @@ CREATE TABLE `vj_login_cliente` (
   KEY `fk_mv_login_mv_roles1_idx` (`vj_roles_id_rol`),
   CONSTRAINT `fk_mv_login_mv_clientes1` FOREIGN KEY (`vj_clientes_id_cliente`) REFERENCES `vj_clientes` (`id_cliente`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_mv_login_mv_roles1` FOREIGN KEY (`vj_roles_id_rol`) REFERENCES `vj_roles` (`id_rol`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 /*Data for the table `vj_login_cliente` */
 
-insert  into `vj_login_cliente`(`id_login`,`user_cliente`,`pass_cliente`,`vj_clientes_id_cliente`,`vj_roles_id_rol`) values (1,'85649939','admin',85649939,4),(2,'5555555','1',5555555,4),(3,'92543211','1',92543211,4),(4,'','',777,4),(5,'55544','1',55544,4);
+insert  into `vj_login_cliente`(`id_login`,`user_cliente`,`pass_cliente`,`vj_clientes_id_cliente`,`vj_roles_id_rol`) values (1,'85649939','admin',85649939,4),(2,'5555555','1',5555555,4),(3,'92543211','1',92543211,4),(4,'','',777,4),(5,'55544','1',55544,4),(6,'92566777','1',92566777,4);
 
 /*Table structure for table `vj_login_empleado` */
 
@@ -178,7 +176,7 @@ CREATE TABLE `vj_login_empleado` (
 
 /*Data for the table `vj_login_empleado` */
 
-insert  into `vj_login_empleado`(`id_login_empleado`,`user_emp`,`pass_emp`,`vj_roles_id_rol`,`vj_empleado_id_empleado`) values (0,'92456700','1234',92456700,4),(92599398,'Ogro','2',3,92599398),(1102789456,'admin','4321',1,1102789456);
+insert  into `vj_login_empleado`(`id_login_empleado`,`user_emp`,`pass_emp`,`vj_roles_id_rol`,`vj_empleado_id_empleado`) values (0,'92456700','1234',92456700,4),(1102789456,'admin','4321',1,1102789456);
 
 /*Table structure for table `vj_peliculas` */
 
@@ -203,7 +201,7 @@ CREATE TABLE `vj_peliculas` (
 
 /*Data for the table `vj_peliculas` */
 
-insert  into `vj_peliculas`(`id_peliculas`,`nombre_pelicula`,`fecha_estreno`,`duracion`,`sinopsis`,`imagen`,`estado_alquiler`,`estado_reserva`,`fecha_registro`,`creado_por`,`vj_categorias_id_categoria`) values (1,'Al filo del Mañana 1','2015-05-02','140','...','alfilo.jpg',0,0,'2015-06-25',1,1),(2,'Avengers: Infinity War','2018-05-02','160','...','avenger.jpg',0,0,'2015-06-25',1,2),(3,'El Conjuro 7','2017-04-10','160','...','elconjuro.jpg',0,0,'2015-06-25',1,4),(5,'12 Años de Esclavitud','2016-06-14','120','...','12anos-2.jpg',0,0,'2015-06-25',1,1),(6,'Armagedon','2000-04-05','160','...','armagedon.jpg',1,1,'2015-06-26',1,1),(7,'Los Increibles 3','2018-07-04','110','...','losincreibles.jpg',0,0,'2018-07-05',1,1),(9,'La era de hielo 2','1990-12-01','120','...','losincreibles.jpg',1,1,'2018-11-07',1,3),(10,'El señor de los anillos ','2000-11-03','160','...','losincreibles.jpg',1,1,'2018-11-07',1,1),(15,'Los Pitufos','2018-07-04','120','...','losincreibles.jpg',1,1,'2018-11-14',1,3);
+insert  into `vj_peliculas`(`id_peliculas`,`nombre_pelicula`,`fecha_estreno`,`duracion`,`sinopsis`,`imagen`,`estado_alquiler`,`estado_reserva`,`fecha_registro`,`creado_por`,`vj_categorias_id_categoria`) values (1,'Al filo del Mañana 1','2015-05-02','140','...','alfilo.jpg',0,0,'2015-06-25',1,1),(2,'Avengers: Infinity War','2018-05-02','160','...','avenger.jpg',0,0,'2015-06-25',1,2),(3,'El Conjuro ','2017-04-10','160','...','elconjuro.jpg',0,0,'2015-06-25',1,4),(5,'12 Años de Esclavitud','2016-06-14','120','...','12anos-2.jpg',0,0,'2015-06-25',1,1),(6,'Armagedon','2000-04-05','160','...','armagedon.jpg',1,1,'2015-06-26',1,1),(7,'Los Increibles 3','2018-07-04','110','...','losincreibles.jpg',0,0,'2018-07-05',1,1),(9,'La era de hielo 2','1990-12-01','120','...','losincreibles.jpg',1,1,'2018-11-07',1,3);
 
 /*Table structure for table `vj_reservas` */
 
@@ -297,19 +295,6 @@ END */$$
 
 DELIMITER ;
 
-/* Function  structure for function  `buscaClientePorID` */
-
-/*!50003 DROP FUNCTION IF EXISTS `buscaClientePorID` */;
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`movies`@`%` FUNCTION `buscaClientePorID`(`idcliente` INT(11)) RETURNS char(255) CHARSET latin1
-BEGIN
-	DECLARE resultado CHAR(255);
-	SELECT CONCAT(nombres, ' ', apellidos) as nombreEmpleado INTO resultado FROM vj_clientes WHERE id_cliente = idcliente;
-    RETURN resultado;
-END */$$
-DELIMITER ;
-
 /* Function  structure for function  `buscaPeliculaPorID` */
 
 /*!50003 DROP FUNCTION IF EXISTS `buscaPeliculaPorID` */;
@@ -320,19 +305,6 @@ BEGIN
 	DECLARE nombre char(255);    
 	SELECT nombre_pelicula INTO nombre FROM vj_peliculas WHERE id_peliculas = id;
 	RETURN nombre;
-END */$$
-DELIMITER ;
-
-/* Function  structure for function  `datosCliente` */
-
-/*!50003 DROP FUNCTION IF EXISTS `datosCliente` */;
-DELIMITER $$
-
-/*!50003 CREATE DEFINER=`movies`@`%` FUNCTION `datosCliente`(`cname` CHAR(100), `clname` CHAR(100)) RETURNS char(100) CHARSET latin1
-BEGIN
-	DECLARE NombresCompleto CHAR(200);
-    SET NombresCompleto = CONCAT(cname, ' ', clname);
-    RETURN NombresCompleto;
 END */$$
 DELIMITER ;
 

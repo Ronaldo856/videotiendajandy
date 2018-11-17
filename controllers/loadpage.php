@@ -169,6 +169,7 @@ class loadpage
             Session::sessionExist();
             if(request::isGet())
             {                
+                echo "paso1 --> ".$_GET['id_cliente'];
                 $cliente = new clientes();
 
                 if(!$cliente->isNotEmpty($_GET))
